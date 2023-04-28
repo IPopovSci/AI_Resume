@@ -41,7 +41,7 @@ class Resume:
         for job_number,job in enumerate(self.resume_load['work']):
             new_highlights = [highlight for highlight in job['highlights']
                               for skill in self.job_keywords
-                              if fuzz.partial_ratio(highlight.lower(), skill.lower()) > self.fuzz_work_strength]
+                              if fuzz.token_set_ratio(highlight.lower(), skill.lower()) >= self.fuzz_work_strength]
             if self.debug:
                 print('Current new_highlights: ', new_highlights)
             if len(new_highlights) != 0:
@@ -100,7 +100,7 @@ class Resume:
                 continue #Do not execute the remainder of the loop
             new_highlights = [highlight for highlight in project['highlights']
                               for skill in self.job_keywords
-                              if fuzz.partial_ratio(highlight.lower(), skill.lower()) > self.fuzz_projects_strength]
+                              if fuzz.token_set_ratio(highlight.lower(), skill.lower()) > self.fuzz_projects_strength]
             if len(new_highlights) != 0:
                 self.resume_output['projects'][rescopy_number]['highlights'] = list(set(new_highlights))
             else:
