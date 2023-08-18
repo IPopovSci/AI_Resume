@@ -1,6 +1,6 @@
-# airflow_etl_stock_pipeline
+# AI Resume Helper
 
-An airflow pipeline for daily updates on selected stock market companies news and prices.
+Set of scripts to work with JSON resume using NLP and ChatGPT in order to simplify resume and cover letter tailoring to specific jobs. 
 
 ## Table of contents
 
